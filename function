@@ -1,0 +1,51 @@
+# Print list
+def print_list(contacts):
+    print("================== CONTACT LIST ==================")
+    print("Index First Name        Last Name")
+    print("====== ==================== ====================")
+
+    for i, (first, last) in enumerate(contacts):
+        print(f"{i:<6}{first:<20}{last:<20}")
+        
+#add function
+def add_contact(contacts):
+    first_name = (input("Enter first name: "))
+    last_name = (input("Enter last name: "))
+    contacts.append([first_name, last_name])
+    return contacts
+
+#modify contact
+def modify_contact(contacts):
+    index = input("Enter the index of the contact to modify: ")
+
+    if not index.isdigit():
+        print("Invalid index number.")
+        return contacts
+    index = int(index)
+    
+    if index < 0 or index >= len(contacts):
+        print("Invalid index number.")
+        return contacts
+    
+    first_name = (input("Enter first name: "))
+    last_name = (input("Enter last name: "))
+
+    contacts[index] = [first_name, last_name]
+    return contacts
+
+#delete contacts
+def delete_contacts(contacts):
+    index = input("Enter the index of the contact to delete: ")
+
+    if not index.isdigit():
+        print("Invalid index number.")
+        return contacts
+    index = int(index)
+    
+    if index < 0 or index >= len(contacts):
+        print("Invalid index number.")
+        return contacts
+    
+    removed_contact = contacts.pop(index)
+    print(f"Removed contact: {removed_contact[0]} {removed_contact[1]}")
+    return contacts
